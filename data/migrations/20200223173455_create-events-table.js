@@ -5,10 +5,10 @@ exports.up = function(knex, Promise) {
       .primary()
       .notNullable();
     tbl.string("name").notNullable();
-    tbl.string("date")
-    tbl.string("location")
-    tbl.string("description")
-    tbl.string("poster")
+    tbl.string("date");
+    tbl.string("location");
+    tbl.string("description");
+    tbl.string("poster");
   });
 };
 

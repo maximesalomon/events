@@ -1,7 +1,7 @@
 const db = require("./db");
 
 const addEvent = event => {
-  return db("events").insert(event)
+  return db("events").insert(event);
 };
 
 const findEventById = id => {
@@ -15,15 +15,17 @@ const findEvents = () => {
 };
 
 const updateEvent = event => {
-    console.log(event);
-    return db("events")
-      .where({ id: event.id })
-      .update(event)
-  };
+  console.log(event);
+  return db("events")
+    .where({ id: event.id })
+    .update(event);
+};
 
 const deleteEvent = id => {
-    return db("events").where({ id: id}).del(id)
-  };
+  return db("events")
+    .where({ id: id })
+    .del(id);
+};
 
 module.exports = {
   addEvent,
