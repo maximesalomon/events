@@ -1,11 +1,13 @@
+const db = require("./data/helpers");
+const uuidv4 = require('uuid/v4');
+
 const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
+  GraphQLNonNull,
   GraphQLSchema
 } = require("graphql");
-
-const db = require("./data/helpers");
 
 // Event Type
 const EventType = new GraphQLObjectType({
@@ -65,6 +67,36 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
+// Mutations
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addEvent: {
+            type: EventType,
+            args: {
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                date: { type: GraphQLString },
+                location: { type: GraphQLString },
+                description: { type: GraphQLString },
+                poster: { type: GraphQLString },
+            },
+            resolve(parent, args) {
+                const event = {
+                    id: uuidv4(),
+                    name: args.name,
+                    date: args.date,
+                    location: args.location,
+                    description: args.description,
+                    poster: args.poster
+                };
+                console.log(event)
+                return db.addEvent(event).then(res => console.log(res))
+            }
+        }
+    }
+})
+
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation
 });

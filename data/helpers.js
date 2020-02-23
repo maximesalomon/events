@@ -1,5 +1,9 @@
 const db = require("./db");
 
+const addEvent = event => {
+  return db("events").insert(event);
+};
+
 const findEventById = id => {
   return db("events")
     .where({ id })
@@ -11,6 +15,7 @@ const findEvents = () => {
 };
 
 module.exports = {
+  addEvent,
   findEventById,
   findEvents
 };
