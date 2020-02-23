@@ -86,11 +86,17 @@ const RootQuery = new GraphQLObjectType({
         id: { type: GraphQLInt }
       },
       resolve(parent, args) {
-        for(let i = 0; i < events.length; i++) {
-            if(events[i].id === args.id) {
-                return events[i]
-            }
+        for (let i = 0; i < events.length; i++) {
+          if (events[i].id === args.id) {
+            return events[i];
+          }
         }
+      }
+    },
+    events: {
+      type: GraphQLList(EventType),
+      resolve(parent, args) {
+        return events;
       }
     }
   }
