@@ -1,5 +1,5 @@
 const db = require("./data/helpers");
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require("uuid/v4");
 
 const {
   GraphQLObjectType,
@@ -69,32 +69,40 @@ const RootQuery = new GraphQLObjectType({
 
 // Mutations
 const mutation = new GraphQLObjectType({
-    name: 'Mutation',
-    fields: {
-        addEvent: {
-            type: EventType,
-            args: {
-                name: { type: new GraphQLNonNull(GraphQLString) },
-                date: { type: GraphQLString },
-                location: { type: GraphQLString },
-                description: { type: GraphQLString },
-                poster: { type: GraphQLString },
-            },
-            resolve(parent, args) {
-                const event = {
-                    id: uuidv4(),
-                    name: args.name,
-                    date: args.date,
-                    location: args.location,
-                    description: args.description,
-                    poster: args.poster
-                };
-                console.log(event)
-                return db.addEvent(event).then(res => console.log(res))
-            }
+  name: "Mutation",
+  fields: {
+    addEvent: {
+      type: EventType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        date: { type: GraphQLString },
+        location: { type: GraphQLString },
+        description: { type: GraphQLString },
+        poster: { type: GraphQLString }
+      },
+      resolve(parent, args) {
+        const event = {
+          id: uuidv4(),
+          name: args.name,
+          date: args.date,
+          location: args.location,
+          description: args.description,
+          poster: args.poster
+        };
+        return db.addEvent(event).then(res => { return event }) // TO UPDATE???
+      }
+    },
+    deleteEvent: {
+        type: EventType,
+        args: {
+            id: { type : new GraphQLNonNull(GraphQLString) }
+        },
+        resolve(parent, args) {
+          return db.deleteEvent(args.id).then(res => { return args }) // TO UPDATE???
         }
-    }
-})
+      }
+  }
+});
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
