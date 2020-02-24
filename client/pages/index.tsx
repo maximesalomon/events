@@ -4,7 +4,6 @@ import EventList from "../components/EventList";
 const IndexPage = () => {
   return (
     <>
-      <h1>Events</h1>
       <EventList />
     </>
   );
