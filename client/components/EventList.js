@@ -6,6 +6,8 @@ export const ALL_EVENTS_QUERY = gql`
     events {
       id
       name
+      date
+      location
     }
   }
 `;
@@ -13,18 +15,16 @@ export const ALL_EVENTS_QUERY = gql`
 export default function EventList() {
   const { data } = useQuery(ALL_EVENTS_QUERY);
   return (
-    <section>
-      <ul>
-        {data !== undefined
-          ? data.events.map(event => (
-              <li key={event.id}>
-                <div>
-                  <p>{event.name}</p>
-                </div>
-              </li>
-            ))
-          : null}
-      </ul>
-    </section>
+    <>
+      {data !== undefined
+        ? data.events.map(event => (
+            <div key={event.id}>
+              <h2>{event.name}</h2>
+              <p>{event.date}</p>
+              <p>{event.location}</p>
+            </div>
+          ))
+        : null}
+    </>
   );
 }
