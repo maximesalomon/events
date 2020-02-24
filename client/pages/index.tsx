@@ -1,9 +1,7 @@
-import { NextPage } from "next";
+import { withApollo } from '../lib/apollo'
 
-const Index: NextPage = () => {
-  return (
+const IndexPage = () => (
     <h1>Events</h1>
-  );
-};
+)
 
-export default Index;
+export default withApollo({ ssr: true })(IndexPage)
