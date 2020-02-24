@@ -14,29 +14,33 @@ export const ALL_EVENTS_QUERY = gql`
   }
 `;
 
-export default function EventList() {
+const EventList = () => {
   const { data } = useQuery(ALL_EVENTS_QUERY);
   return (
-    <div class="px-8 py-12">
-      <div class="flex -mx-2">
+    <div className="pl-8 py-12 ">
+      <h2 className="px-4 pb-2 text-2xl font-bold text-white">Prochainement</h2>
+      <div class="flex flex-no-wrap overflow-x-auto hide-overflow-bar">
         {data !== undefined
-          ? data.events.map(event => (
-              <div class="w-1/3 px-4">
-                <div
-                  key={event.id}
-                  className="max-w-sm rounded overflow-hidden shadow-lg"
-                >
-                  <img className="w-full h-48" src={event.poster} />
-                  <div className="px-4 py-4 bg-blue-900 h-32">
-                    <div className="font-bold text-white text-lg mb-2">{event.name}</div>
-                    <p className="text-gray-200 font-bold text-sm">{event.date}</p>
-                    <p className="text-gray-500 text-sm">{event.location}</p>
-                  </div>
-                </div>
-              </div>
-            ))
+          ? data.events.map(event => <EventCard event={event} />)
           : null}
       </div>
     </div>
   );
+};
+
+export function EventCard({ event }) {
+  return (
+    <div class="flex-none w-80 px-4">
+      <div key={event.id} className="rounded overflow-hidden shadow-lg">
+        <img className="h-48 w-full" src={event.poster} />
+        <div className="px-4 py-4 bg-gray-700 h-32">
+          <div className="font-bold text-white text-lg mb-2">{event.name}</div>
+          <p className="text-gray-200 font-bold text-sm">{event.date}</p>
+          <p className="text-gray-500 text-sm">{event.location}</p>
+        </div>
+      </div>
+    </div>
+  );
 }
+
+export default EventList;
