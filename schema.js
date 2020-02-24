@@ -45,9 +45,9 @@ const EventType = new GraphQLObjectType({
 //     })
 // })
 
-// Root Query
-const RootQuery = new GraphQLObjectType({
-  name: "RootQuery",
+// Query
+const Query = new GraphQLObjectType({
+  name: "Query",
   fields: {
     event: {
       type: EventType,
@@ -67,8 +67,8 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
-// Mutations
-const mutation = new GraphQLObjectType({
+// Mutation
+const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
     addEvent: {
@@ -125,6 +125,6 @@ const mutation = new GraphQLObjectType({
 });
 
 module.exports = new GraphQLSchema({
-  query: RootQuery,
-  mutation
+  query: Query,
+  mutation: Mutation
 });
