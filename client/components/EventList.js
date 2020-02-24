@@ -17,7 +17,7 @@ export const ALL_EVENTS_QUERY = gql`
 const EventList = () => {
   const { data } = useQuery(ALL_EVENTS_QUERY);
   return (
-    <div className="pl-8 py-12 ">
+    <div className="pl-8 py-6 bg-gray-900">
       <h2 className="px-4 pb-2 text-2xl font-bold text-white">Prochainement</h2>
       <div class="flex flex-no-wrap overflow-x-auto hide-overflow-bar">
         {data !== undefined

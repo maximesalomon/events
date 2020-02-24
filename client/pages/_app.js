@@ -6,9 +6,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <div className="bg-gray-900 h-screen">
         <Component {...pageProps} />
-      </div>
     );
   }
 }

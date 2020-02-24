@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav class="flex items-center justify-between flex-wrap p-6">
+    <nav class="fixed flex items-center justify-between flex-wrap px-6 py-4 bg-gray-900 w-full">
       <div class="flex items-center ml-4 flex-shrink-0 text-white mr-6">
         <img
           className="mt-1"
@@ -9,7 +9,7 @@ const Navbar = () => {
         />
       </div>
       <div class="w-full ml-16 block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-base lg:flex-grow">
+        <div class="text-sm lg:flex-grow">
           <a class="block lg:inline-block text-white hover:text-white mr-4">
             <button class="flex bg-transparent hover:bg-pink-500 text-white font-semibold hover:text-white py-2 px-6 border border-pink-500 hover:border-transparent rounded">
               <p>Paris</p>
@@ -21,16 +21,8 @@ const Navbar = () => {
           />
         </div>
         <div>
-          <a class="inline-block text-base px-4 mb-2 leading-none text-white border-white hover:border-transparent hover:text-pink-500">
+          <a class="inline-block text-sm px-4 leading-none text-white border-white hover:border-transparent hover:text-pink-500">
             Organisateurs
-          </a>
-        </div>
-        <div>
-          <a class="inline-block leading-none">
-            <img
-              src="https://cdn.onlinewebfonts.com/svg/img_184513.png"
-              width="32px"
-            ></img>
           </a>
         </div>
       </div>

@@ -1,5 +1,9 @@
 .hide-overflow-bar::-webkit-scrollbar { width: 0 !important }
 
+.h-400px {
+  height: 400px; 
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
