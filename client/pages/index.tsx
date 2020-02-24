@@ -1,7 +1,13 @@
-import { withApollo } from '../lib/apollo'
+import { withApollo } from "../lib/apollo";
+import EventList from "../components/EventList";
 
-const IndexPage = () => (
-    <h1>Events</h1>
-)
+const IndexPage = () => {
+  return (
+    <>
+      <h1>Events</h1>
+      <EventList />
+    </>
+  );
+};
 
-export default withApollo({ ssr: true })(IndexPage)
+export default withApollo({ ssr: true })(IndexPage);
