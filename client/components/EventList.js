@@ -32,7 +32,7 @@ const EventList = () => {
 export function EventCard({ event }) {
   const event_link = "/events/" + event.name
   return (
-    <Link href={event_link}>
+    <Link href={event_link}><a>
       <div class="flex-none w-80 px-4">
         <div key={event.id} className="rounded overflow-hidden shadow-lg">
           <img className="h-48 w-full" src={event.poster} />
@@ -45,7 +45,7 @@ export function EventCard({ event }) {
           </div>
         </div>
       </div>
-    </Link>
+    </a></Link>
   );
 }
 
