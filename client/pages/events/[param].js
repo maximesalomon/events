@@ -1,10 +1,16 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import Navbar from "../../components/Navbar";
 
 const Events = () => {
-    const router = useRouter()
-    const { eventName } = router.query
-  
-    return <p>Event: {eventName}</p>
-  }
-  
-  export default Events
+  const router = useRouter();
+  const { param } = router.query;
+
+  return (
+    <>
+      <Navbar />
+      <p>Event name: {param}</p>
+    </>
+  );
+};
+
+export default Events;
