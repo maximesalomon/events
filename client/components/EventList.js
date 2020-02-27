@@ -20,10 +20,12 @@ export const ALL_EVENTS_QUERY = gql`
 const EventList = () => {
   const { loading, error, data, refetch } = useQuery(ALL_EVENTS_QUERY);
   if (loading) return <p>Loading ...</p>;
+  if (error) return (<>{console.log(error)} <p>ERROR</p></>);
+  if (!data) return <p>No data found</p>;
   return (
     <div className="pl-8 py-6 bg-gray-900">
       <h2 className="px-4 pb-2 text-2xl font-bold text-white">Prochainement</h2>
-      <div class="flex flex-no-wrap overflow-x-auto hide-overflow-bar">
+      <div className="flex flex-no-wrap overflow-x-auto hide-overflow-bar">
         {data !== undefined
           ? data.events.map(event => <EventCard key={event.id} event={event} />)
           : null}

@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
+import { withApollo } from "../../lib/apollo";
 import Navbar from "../../components/Navbar";
 import gql from "graphql-tag";
 
 const Event = () => {
   const router = useRouter();
+  const event_id = router.query.eventNameId.slice(-36)
   const EVENT_BY_ID = gql`
     query Event {
       event(id: "d0e32dbd-15b6-423c-a4b1-0a8d25814f3c") {
@@ -13,12 +15,15 @@ const Event = () => {
     }
   `;
   const { loading, error, data, refetch } = useQuery(EVENT_BY_ID);
+  if (loading) return <><Navbar /><p className="pt-32">Loading</p></>;
+  if (error) return <>{console.log(error)}<Navbar /><p className="pt-32">ERROR</p></>;
+  if (!data) return <><Navbar /><p className="pt-32">No data found</p></>;
   return (
     <>
       <Navbar />
-      <p className="pt-32">{loading == true ? <p>Loading ...</p> : "Title"}</p>
+      <p className="pt-32">{loading == true ? null : data.event.name}</p>
     </>
   );
 };
 
-export default Event;
+export default withApollo({ ssr: true })(Event);
