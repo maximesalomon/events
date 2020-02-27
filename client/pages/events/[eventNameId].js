@@ -2,15 +2,20 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
 import { withApollo } from "../../lib/apollo";
 import Navbar from "../../components/Navbar";
+import Event from "../../components/Event";
 import gql from "graphql-tag";
 
-const Event = () => {
+const EventContainer = () => {
   const router = useRouter();
   const event_id = router.query.eventNameId.slice(-36)
   const EVENT_BY_ID = gql`
     query Event($id: String) {
       event(id: $id) {
         name
+        date
+        location
+        description
+        poster
       }
     }
   `;
@@ -23,9 +28,9 @@ const Event = () => {
   return (
     <>
       <Navbar />
-      <p className="pt-32">{loading == true ? null : data.event.name}</p>
+      <Event event={data.event} />
     </>
   );
 };
 
-export default withApollo({ ssr: true })(Event);
+export default withApollo({ ssr: true })(EventContainer);

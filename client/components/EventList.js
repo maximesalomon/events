@@ -20,7 +20,12 @@ export const ALL_EVENTS_QUERY = gql`
 const EventList = () => {
   const { loading, error, data, refetch } = useQuery(ALL_EVENTS_QUERY);
   if (loading) return <p>Loading ...</p>;
-  if (error) return (<>{console.log(error)} <p>ERROR</p></>);
+  if (error)
+    return (
+      <>
+        {console.log(error)} <p>ERROR</p>
+      </>
+    );
   if (!data) return <p>No data found</p>;
   return (
     <div className="pl-8 py-6 bg-gray-900">
@@ -35,8 +40,11 @@ const EventList = () => {
 };
 
 export function EventCard({ event }) {
-  const clean_event_name = event.name.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-')
-  const event_link = "/events/" + clean_event_name + '-' + event.id;
+  const clean_event_name = event.name
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .replace(/\s+/g, "-");
+  const event_link = "/events/" + clean_event_name + "-" + event.id;
   return (
     <Link as={event_link} href="/events/[eventNameId]">
       <a>

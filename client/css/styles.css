@@ -1,3 +1,7 @@
+.max-h-coverimg {
+  max-height: 400px;
+}
+
 .hide-overflow-bar::-webkit-scrollbar { width: 0 !important }
 
 .h-400px {
