@@ -8,13 +8,15 @@ const Event = () => {
   const router = useRouter();
   const event_id = router.query.eventNameId.slice(-36)
   const EVENT_BY_ID = gql`
-    query Event {
-      event(id: "d0e32dbd-15b6-423c-a4b1-0a8d25814f3c") {
+    query Event($id: String) {
+      event(id: $id) {
         name
       }
     }
   `;
-  const { loading, error, data, refetch } = useQuery(EVENT_BY_ID);
+  const { loading, error, data, refetch } = useQuery(EVENT_BY_ID, {
+    variables: { "id": event_id }
+  });
   if (loading) return <><Navbar /><p className="pt-32">Loading</p></>;
   if (error) return <>{console.log(error)}<Navbar /><p className="pt-32">ERROR</p></>;
   if (!data) return <><Navbar /><p className="pt-32">No data found</p></>;
