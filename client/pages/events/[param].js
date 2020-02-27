@@ -8,7 +8,7 @@ const Events = () => {
   return (
     <>
       <Navbar />
-      <p>Event name: {param}</p>
+      <p className="pt-32">Event name: {param}</p>
     </>
   );
 };

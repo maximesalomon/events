@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useQuery } from "@apollo/react-hooks";
+import { useRouter } from "next/router";
 import gql from "graphql-tag";
 import Link from "next/link";
 
@@ -16,7 +18,8 @@ export const ALL_EVENTS_QUERY = gql`
 `;
 
 const EventList = () => {
-  const { data } = useQuery(ALL_EVENTS_QUERY);
+  const { loading, error, data, refetch } = useQuery(ALL_EVENTS_QUERY);
+  if (loading) return <p>Loading ...</p>;
   return (
     <div className="pl-8 py-6 bg-gray-900">
       <h2 className="px-4 pb-2 text-2xl font-bold text-white">Prochainement</h2>
@@ -30,22 +33,28 @@ const EventList = () => {
 };
 
 export function EventCard({ event }) {
-  const event_link = "/events/" + event.name
+  const handleClick = e => {
+    e.preventDefault();
+    router.push(href);
+  };
+  const event_link = "/events/" + event.name + event.id;
   return (
-    <Link href={event_link}><a>
-      <div class="flex-none w-80 px-4">
-        <div key={event.id} className="rounded overflow-hidden shadow-lg">
-          <img className="h-48 w-full" src={event.poster} />
-          <div className="px-4 py-4 bg-gray-700 h-32">
-            <div className="font-bold text-white text-lg mb-2">
-              {event.name}
+    <Link href={event_link} onClick={handleClick}>
+      <a>
+        <div class="flex-none w-80 px-4">
+          <div key={event.id} className="rounded overflow-hidden shadow-lg">
+            <img className="h-48 w-full" src={event.poster} />
+            <div className="px-4 py-4 bg-gray-700 h-32">
+              <div className="font-bold text-white text-lg mb-2">
+                {event.name}
+              </div>
+              <p className="text-gray-200 font-bold text-sm">{event.date}</p>
+              <p className="text-gray-500 text-sm">{event.location}</p>
             </div>
-            <p className="text-gray-200 font-bold text-sm">{event.date}</p>
-            <p className="text-gray-500 text-sm">{event.location}</p>
           </div>
         </div>
-      </div>
-    </a></Link>
+      </a>
+    </Link>
   );
 }
 

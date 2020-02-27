@@ -1,12 +1,19 @@
+import { useRouter } from "next/router";
+import Link from "next/link";
+
 const Navbar = () => {
+  const handleClick = e => {
+    e.preventDefault()
+    useRouter.push(href)
+  }
   return (
     <nav class="fixed flex items-center justify-between flex-wrap px-6 py-4 bg-gray-900 w-full">
       <div class="flex items-center ml-4 flex-shrink-0 text-white mr-6">
-        <img
+        <Link href={"/"} onClick={handleClick}><img
           className="mt-1"
           width="120"
           src="https://d1yyfrhejvllsj.cloudfront.net/b2c-web/images/logo-shotgun@3x.png"
-        />
+        /></Link>
       </div>
       <div class="w-full ml-16 block flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-sm lg:flex-grow">
