@@ -22,9 +22,9 @@ const EventContainer = () => {
   const { loading, error, data, refetch } = useQuery(EVENT_BY_ID, {
     variables: { "id": event_id }
   });
-  if (loading) return <><Navbar /><p className="pt-32">Loading</p></>;
-  if (error) return <>{console.log(error)}<Navbar /><p className="pt-32">ERROR</p></>;
-  if (!data) return <><Navbar /><p className="pt-32">No data found</p></>;
+  if (loading) return <><Navbar /><div className="pt-32 h-screen bg-gray-900"></div></>;
+  if (error) return <>{console.log(error)}<Navbar /><p className="pt-32 bg-gray-900 text-white">ERROR</p></>;
+  if (!data) return <><Navbar /><p className="pt-32 bg-gray-900 text-white">No data found</p></>;
   return (
     <>
       <Navbar />

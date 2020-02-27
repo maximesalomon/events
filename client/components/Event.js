@@ -1,7 +1,7 @@
 const Event = ({ event }) => {
   return (
     <header>
-      <section className="pt-32 bg-gray-900 h-screen">
+      <section className="pt-24 bg-gray-900 h-screen">
         <div className="max-w-4xl m-auto">
           <h1 className="m-auto pt-8 text-4xl text-white font-bold">
             {event.name}

@@ -19,14 +19,14 @@ export const ALL_EVENTS_QUERY = gql`
 
 const EventList = () => {
   const { loading, error, data, refetch } = useQuery(ALL_EVENTS_QUERY);
-  if (loading) return <p>Loading ...</p>;
+  if (loading) return <p className="pt-32 bg-gray-900 text-white"></p>;
   if (error)
     return (
       <>
-        {console.log(error)} <p>ERROR</p>
+        {console.log(error)} <p className="pt-32 bg-gray-900 text-white">ERROR</p>
       </>
     );
-  if (!data) return <p>No data found</p>;
+  if (!data) return <p className="pt-32 bg-gray-900 text-white">No data found</p>;
   return (
     <div className="pl-8 py-6 bg-gray-900">
       <h2 className="px-4 pb-2 text-2xl font-bold text-white">Prochainement</h2>
