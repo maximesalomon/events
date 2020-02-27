@@ -1,3 +1,4 @@
+import { withApollo } from "../lib/apollo";
 import React from "react";
 import App from "next/app";
 import "../css/styles.css";
@@ -11,4 +12,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default withApollo({ ssr: true })(MyApp);
