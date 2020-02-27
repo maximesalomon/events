@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import gql from "graphql-tag";
@@ -25,7 +25,7 @@ const EventList = () => {
       <h2 className="px-4 pb-2 text-2xl font-bold text-white">Prochainement</h2>
       <div class="flex flex-no-wrap overflow-x-auto hide-overflow-bar">
         {data !== undefined
-          ? data.events.map(event => <EventCard event={event} />)
+          ? data.events.map(event => <EventCard key={event.id} event={event} />)
           : null}
       </div>
     </div>
@@ -33,16 +33,12 @@ const EventList = () => {
 };
 
 export function EventCard({ event }) {
-  const handleClick = e => {
-    e.preventDefault();
-    router.push(href);
-  };
   const event_link = "/events/" + event.name + event.id;
   return (
-    <Link href={event_link} onClick={handleClick}>
+    <Link as={event_link} href="/events/[eventNameId]">
       <a>
-        <div class="flex-none w-80 px-4">
-          <div key={event.id} className="rounded overflow-hidden shadow-lg">
+        <div className="flex-none w-80 px-4">
+          <div className="rounded overflow-hidden shadow-lg">
             <img className="h-48 w-full" src={event.poster} />
             <div className="px-4 py-4 bg-gray-700 h-32">
               <div className="font-bold text-white text-lg mb-2">

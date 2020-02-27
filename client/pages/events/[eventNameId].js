@@ -3,12 +3,11 @@ import Navbar from "../../components/Navbar";
 
 const Events = () => {
   const router = useRouter();
-  const { param } = router.query;
 
   return (
     <>
       <Navbar />
-      <p className="pt-32">Event name: {param}</p>
+      <p className="pt-32">{router.query.eventNameId}</p>
     </>
   );
 };
