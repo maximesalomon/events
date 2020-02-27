@@ -33,7 +33,7 @@ const EventList = () => {
 };
 
 export function EventCard({ event }) {
-  const event_link = "/events/" + event.name + event.id;
+  const event_link = "/events/" + event.name.replace(/\s+/g, '-') + '-' + event.id;
   return (
     <Link as={event_link} href="/events/[eventNameId]">
       <a>
