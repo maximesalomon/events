@@ -1,6 +1,7 @@
-import Popup from "reactjs-popup";
+import { useState } from "react";
 
 const Event = ({ event }) => {
+  const [seeTickets, setSeeTickets] = useState(false);
   return (
     <header>
       <section className="pt-24 bg-gray-900 h-screen">
@@ -20,18 +21,14 @@ const Event = ({ event }) => {
                 <span className="font-bold">Lieu :</span> {event.location}
               </p>
             </div>
-            <Popup
-              trigger={
-                <button className="mt-12 bg-shotgun-pink hover:bg-purple-700 h-12 px-10 rounded text-white">
-                  Voir les billets
-                </button>
-              }
-              modal
-              closeOnDocumentClick
+            <button
+              onClick={() => setSeeTickets(!seeTickets)}
+              className="mt-12 bg-shotgun-pink hover:bg-purple-700 h-12 px-10 rounded text-white"
             >
-              <div>Popup content here !!</div>
-            </Popup>
+              {seeTickets === false ? "Voir les billets" : "Cacher les billets"}
+            </button>
           </div>
+          {seeTickets === false ? null : <div>BILLETS</div>}
         </div>
       </section>
     </header>
