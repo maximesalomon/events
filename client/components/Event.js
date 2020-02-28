@@ -1,10 +1,11 @@
 import { useState } from "react";
+import Tickets from "./Tickets";
 
 const Event = ({ event }) => {
   const [seeTickets, setSeeTickets] = useState(false);
   return (
-    <header>
-      <section className="pt-24 bg-gray-900 h-screen">
+    <header className="bg-gray-900 h-screen">
+      <section className="pt-24 bg-gray-900">
         <div className="max-w-4xl m-auto">
           <h1 className="m-auto text-4xl text-white font-bold">{event.name}</h1>
           <img
@@ -12,8 +13,8 @@ const Event = ({ event }) => {
             src={event.poster}
           />
           <div className="flex justify-between">
-            <div className="pt-6 text-white">
-              <p className="text-xl font-bold">Informations :</p>
+            <div className="pt-6 text-white pb-16">
+              <p className="text-xl font-bold">Informations</p>
               <p className="pt-2">
                 <span className="font-bold">Date :</span> {event.date}
               </p>
@@ -28,7 +29,9 @@ const Event = ({ event }) => {
               {seeTickets === false ? "Voir les billets" : "Cacher les billets"}
             </button>
           </div>
-          {seeTickets === false ? null : <div>BILLETS</div>}
+          {seeTickets === false ? null : (
+            <Tickets />
+          )}
         </div>
       </section>
     </header>
