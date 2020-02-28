@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="w-full ml-16 block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
           <a className="block lg:inline-block text-white hover:text-white mr-4">
-            <button className="flex bg-transparent hover:bg-pink-500 text-white font-semibold hover:text-white py-2 px-6 border border-pink-500 hover:border-transparent rounded">
+            <button className="flex bg-transparent hover:bg-purple-700 text-white font-semibold hover:text-white py-2 px-6 border border-pink-600 hover:border-transparent rounded">
               <p>Paris</p>
             </button>
           </a>
@@ -28,7 +28,7 @@ const Navbar = () => {
           />
         </div>
         <div>
-          <a className="inline-block text-sm px-4 leading-none text-white border-white hover:border-transparent hover:text-pink-500">
+          <a className="inline-block text-sm px-4 leading-none text-white border-white hover:border-transparent hover:text-pink-600">
             Organisateurs
           </a>
         </div>

@@ -1,3 +1,7 @@
+.bg-shotgun-pink {
+  background-color: #fc0082;
+}
+
 .max-h-coverimg {
   max-height: 400px;
 }
@@ -3893,6 +3897,14 @@ video {
 
 .h-64 {
   height: 16rem;
+}
+
+.h-72 {
+  height: 20rem;
+}
+
+.h-80 {
+  height: 24rem;
 }
 
 .h-auto {
