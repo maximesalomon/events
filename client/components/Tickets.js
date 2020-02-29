@@ -9,7 +9,7 @@ const Tickets = () => {
   };
   return (
     <>
-      <div>
+      <div className="h-64">
         <p className="text-xl font-bold text-white">Billets</p>
         <div className="flex justify-between mt-4">
           <div className="bg-white w-3/5 rounded flex justify-between">
@@ -35,15 +35,16 @@ const Tickets = () => {
           </div>
           <div className="bg-white w-2/6 rounded">
             <div className="flex">
-              <p className="p-4 text-lg font-bold">
+              <p className="pt-4 pl-4 text-lg font-bold">
                 <span>{tickets} </span>
                 {tickets > 1 ? "billets séléctionnés" : "billet séléctionné"}
               </p>
             </div>
-            <div>
+            <div className="flex pl-4 justify-between">
               {tickets >= 1 ? (
                 <>
-                  <p className="pl-4 p-2 text-lg font-bold">{tickets >= 1 ? `Prix = ${tickets * 20}€` : null}</p>
+                  <p className="text-lg">Total :</p>
+                  <p className="text-lg pr-8">{tickets * 20}€</p>
                 </>
               ) : null}
             </div>
