@@ -23,10 +23,10 @@ const Event = ({ event }) => {
               </p>
             </div>
             <button
-              onClick={() => setSeeTickets(!seeTickets)}
+              onClick={() => setSeeTickets(true)}
               className="mt-12 bg-shotgun-pink hover:bg-purple-700 h-12 px-10 rounded text-white"
             >
-              {seeTickets === false ? "Voir les billets" : "Cacher les billets"}
+              Voir les billets
             </button>
           </div>
           {seeTickets === false ? null : (
