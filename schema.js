@@ -9,6 +9,17 @@ const {
   GraphQLSchema
 } = require("graphql");
 
+// User Type
+const UserType = new GraphQLObjectType({
+  name: "User",
+  fields: () => ({
+    id: { type: GraphQLString },
+    email: { type: GraphQLString },
+    password: { type: GraphQLString },
+    type: { type: GraphQLString },
+  })
+});
+
 // Event Type
 const EventType = new GraphQLObjectType({
   name: "Event",
@@ -71,6 +82,25 @@ const Query = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
+    register: {
+      type: UserType,
+      args: {
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+        type: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        const user = {
+          id: uuidv4(),
+          email: args.email,
+          password: args.password,
+          type: args.type
+        };
+        return db.register(user).then(res => {
+          return user;
+        });
+      }
+    },
     addEvent: {
       type: EventType,
       args: {

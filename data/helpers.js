@@ -1,5 +1,14 @@
 const db = require("./db");
+const bcrypt = require('bcryptjs');
 
+// User Helpers
+const register = user => {
+  const hashedPassword = bcrypt.hashSync(user.password, 14);
+  user.password = hashedPassword;
+  return db("users").insert(user);
+};
+
+// Event Helpers
 const addEvent = event => {
   return db("events").insert(event);
 };
@@ -28,6 +37,7 @@ const deleteEvent = id => {
 };
 
 module.exports = {
+  register,
   addEvent,
   findEventById,
   findEvents,
