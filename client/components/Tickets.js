@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 const Tickets = () => {
+  const [tickets, setTickets] = useState(0);
   return (
     <>
       <div className="h-64">
@@ -10,11 +13,11 @@ const Tickets = () => {
               <p className="text-sm text-gray-700 pl-8 py-6">20,00€</p>
             </div>
             <div className="text-base py-6 pr-12 flex">
-              <button className="rounded-full h-8 w-8 flex items-center justify-center bg-shotgun-pink hover:bg-purple-700 text-white">
+              <button onClick={() => setTickets(tickets - 1)} className="rounded-full h-8 w-8 flex items-center justify-center bg-shotgun-pink hover:bg-purple-700 text-white">
                 -
               </button>
               <div className="px-4 pt-1 text-lg font-bold">0</div>
-              <button className="rounded-full h-8 w-8 flex items-center justify-center bg-shotgun-pink hover:bg-purple-700 text-white">
+              <button onClick={() => setTickets(tickets + 1)} className="rounded-full h-8 w-8 flex items-center justify-center bg-shotgun-pink hover:bg-purple-700 text-white">
                 +
               </button>
             </div>
@@ -22,7 +25,8 @@ const Tickets = () => {
           <div className="bg-white w-2/6 rounded">
             <div className="flex">
               <p className="p-4 text-lg font-bold">
-                <span>0 </span>billet séléctionné
+                <span>{tickets} </span>
+                {tickets > 1 ? "billets séléctionnés" : "billet séléctionné"}
               </p>
             </div>
           </div>
