@@ -1,5 +1,5 @@
 const db = require("./db");
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 // User Helpers
 const register = user => {
