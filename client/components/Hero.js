@@ -19,7 +19,7 @@ const Hero = () => {
         >
           <a>
             <button className="mt-6 text-white bg-shotgun-pink hover:bg-purple-700 py-3 px-10 rounded">
-              Découvrir
+              Découvrir >
             </button>
           </a>
         </Link>
