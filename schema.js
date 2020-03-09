@@ -121,7 +121,7 @@ const Mutation = new GraphQLObjectType({
         };
         return db.addEvent(event).then(res => {
           return event;
-        }); // TO UPDATE???
+        }); // TO UPDATE??? No returning in SQLITE
       }
     },
     updateEvent: {
@@ -137,7 +137,7 @@ const Mutation = new GraphQLObjectType({
       resolve(parent, args) {
         return db.updateEvent(args).then(res => {
           return args;
-        }); // TO UPDATE???
+        }); // TO UPDATE??? No returning in SQLITE
       }
     },
     deleteEvent: {
@@ -148,7 +148,7 @@ const Mutation = new GraphQLObjectType({
       resolve(parent, args) {
         return db.deleteEvent(args.id).then(res => {
           return args;
-        }); // TO UPDATE???
+        }); // TO UPDATE??? No returning in SQLITE
       }
     }
   }
