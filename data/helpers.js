@@ -36,6 +36,8 @@ const deleteEvent = id => {
     .del(id);
 };
 
+// Exports
+
 module.exports = {
   register,
   addEvent,
