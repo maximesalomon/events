@@ -1,6 +1,8 @@
 const db = require("./db");
 const bcrypt = require("bcryptjs");
 
+// HELPERS
+
 // User Helpers
 const register = user => {
   const hashedPassword = bcrypt.hashSync(user.password, 14);
@@ -36,7 +38,7 @@ const deleteEvent = id => {
     .del(id);
 };
 
-// Exports
+// EXPORTS
 
 module.exports = {
   register,
