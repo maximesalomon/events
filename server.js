@@ -20,6 +20,8 @@ app.use(
   })
 );
 
+// APP
+
 app.listen(PORT, () =>
   console.log(`Server running --> http://localhost:${PORT}`)
 );
