@@ -6,14 +6,13 @@ const helmet = require("helmet");
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 7000; // PORT
 
-app.use(helmet());
-app.use(cors());
-app.use(bodyParser.json());
+app.use(helmet()); // HEADER + SEO
+app.use(cors()); // CORS
+app.use(bodyParser.json()); // BODY PARSER
 
 // GRAPHQL
-
 app.use(
   "/graphql",
   graphqlHTTP({
@@ -23,7 +22,6 @@ app.use(
 );
 
 // APP
-
 app.listen(PORT, () =>
   console.log(`Server running --> http://localhost:${PORT}`)
 );
