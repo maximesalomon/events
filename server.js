@@ -5,7 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 
-const app = express();
+const app = express(); // EXPRESS
 const PORT = process.env.PORT || 7000; // PORT
 
 app.use(helmet()); // HEADER + SEO
